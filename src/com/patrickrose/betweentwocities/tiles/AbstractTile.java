@@ -25,7 +25,7 @@ abstract public class AbstractTile {
     /**
      * Whether this has been scored
      */
-    protected boolean hasBeenScored = false;
+    private boolean hasBeenScored = false;
 
     /**
      * Useful for unit tests
@@ -49,6 +49,11 @@ abstract public class AbstractTile {
      * @throws IllegalArgumentException If the character cannot be converted to a tile
      */
     public static AbstractTile getTileForCharacter(char character, GameBoard gameBoard, int x, int y) {
+        switch (character) {
+            case Shop.LOAD_CHARACTER:
+                return new Shop(gameBoard, x, y);
+        }
+
         return null;
     }
 
@@ -73,5 +78,17 @@ abstract public class AbstractTile {
      */
     public boolean hasBeenScored() {
         return this.hasBeenScored;
+    }
+
+    public GameBoard getGameBoard() {
+        return gameBoard;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
