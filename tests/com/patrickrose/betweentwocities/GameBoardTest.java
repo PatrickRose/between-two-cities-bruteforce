@@ -5,9 +5,6 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by patrick on 30/04/16.
- */
 public class GameBoardTest {
 
     @Test
