@@ -48,10 +48,12 @@ abstract public class AbstractTile {
      * @return An abstract tile
      * @throws IllegalArgumentException If the character cannot be converted to a tile
      */
-    public static AbstractTile getTileForCharacter(char character, GameBoard gameBoard, int x, int y) {
+    public static AbstractTile getTileForCharacter(char character, GameBoard gameBoard, int x, int y) throws IllegalArgumentException {
         switch (character) {
             case Shop.LOAD_CHARACTER:
                 return new Shop(gameBoard, x, y);
+            case Factory.LOAD_CHARACTER:
+                return new Factory(gameBoard, x, y);
         }
 
         return null;

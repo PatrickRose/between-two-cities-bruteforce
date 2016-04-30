@@ -13,6 +13,7 @@ public class AbstractTileTest {
     public void getTileForCharacter() throws Exception {
         Map<Character, AbstractTile> characterToTile = new HashMap<>();
         characterToTile.put(Shop.LOAD_CHARACTER, new Shop(null, 0, 0));
+        characterToTile.put(Factory.LOAD_CHARACTER, new Factory(null, 0, 0));
 
         for (Map.Entry<Character, AbstractTile> entry : characterToTile.entrySet()) {
             AbstractTile tileForCharacter = AbstractTile.getTileForCharacter(entry.getKey().charValue(), null, 0, 0);
