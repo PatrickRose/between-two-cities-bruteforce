@@ -94,7 +94,7 @@ public class GameBoardTest {
     }
 
     @Test
-    public void testYouCanGetATestTile() {
+    public void testYouCanGetATile() {
 
         TestTile[][] testTiles = {
                 {new TestTile(), new TestTile(), new TestTile(), new TestTile()},
@@ -131,6 +131,26 @@ public class GameBoardTest {
 
         GameBoard gameBoard = new GameBoard(testTiles);
         assertEquals("Did not get the expected score", 0, gameBoard.getScoreForBoard());
+    }
+
+    @Test
+    public void testYouCanScoreTheSameBoardTwice() {
+        TestTile[][] testTiles = {
+                {new TestTile(), new TestTile(), new TestTile(), new TestTile()},
+                {new TestTile(), new TestTile(), new TestTile(), new TestTile()},
+                {new TestTile(), new TestTile(), new TestTile(), new TestTile()},
+                {new TestTile(), new TestTile(), new TestTile(), new TestTile()}
+        };
+
+        for(TestTile[] testTileRow: testTiles) {
+            for(TestTile testTile: testTileRow) {
+                testTile.setTestScore(1);
+            }
+        }
+
+        GameBoard gameBoard = new GameBoard(testTiles);
+        assertEquals("Did not get the expected score", 16, gameBoard.getScoreForBoard());
+        assertEquals("Did not get the expected score when redoing", 16, gameBoard.getScoreForBoard());
     }
 
     private class TestTile extends AbstractTile {

@@ -48,7 +48,7 @@ abstract public class AbstractTile {
      * @return An abstract tile
      * @throws IllegalArgumentException If the character cannot be converted to a tile
      */
-    public static AbstractTile getTileForCharacter(char character) {
+    public static AbstractTile getTileForCharacter(char character, GameBoard gameBoard, int x, int y) {
         return null;
     }
 

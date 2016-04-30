@@ -9,6 +9,8 @@ public class GameBoard {
 
     AbstractTile[][] tiles = new AbstractTile[ROWS][COLS];
 
+    private int score = -1;
+
     /**
      * Create a game board using a string
      *
@@ -17,7 +19,7 @@ public class GameBoard {
      *
      * @throws IllegalArgumentException If the string is invalid
      */
-    public GameBoard(String setup) {
+    public GameBoard(String setup) throws IllegalArgumentException {
         if (setup == null) {
             throw new IllegalArgumentException("Got null, not a string");
         }
@@ -30,7 +32,7 @@ public class GameBoard {
         int colPos = 0;
 
         for (char character : setup.toCharArray()) {
-            tiles[rowPos][colPos] = AbstractTile.getTileForCharacter(character);
+            tiles[rowPos][colPos] = AbstractTile.getTileForCharacter(character, this, rowPos, colPos);
 
             rowPos++;
             if (rowPos == 4) {
@@ -48,7 +50,7 @@ public class GameBoard {
      * @param tiles
      * @throws IllegalArgumentException If the array isn't the correct size
      */
-    public GameBoard(AbstractTile[][] tiles) {
+    public GameBoard(AbstractTile[][] tiles) throws IllegalArgumentException {
         if (tiles.length != ROWS) {
             throw new IllegalArgumentException("There were " + tiles.length + "rows given, instead of " + ROWS);
         }
@@ -68,18 +70,21 @@ public class GameBoard {
      * @return int
      */
     public int getScoreForBoard() {
-        int score = 0;
+        if (this.score == -1) {
+            int score = 0;
 
-        for(AbstractTile[] tileRow: tiles) {
-            for(AbstractTile tile: tileRow) {
-                if (!tile.hasBeenScored()) {
-                    score += tile.getScore();
-                    tile.markAsScored();
+            for (AbstractTile[] tileRow : tiles) {
+                for (AbstractTile tile : tileRow) {
+                    if (!tile.hasBeenScored()) {
+                        score += tile.getScore();
+                        tile.markAsScored();
+                    }
                 }
             }
+            this.score = score;
         }
 
-        return score;
+        return this.score;
     }
 
     public AbstractTile getTileAtPosition(int x, int y) {
