@@ -54,6 +54,14 @@ abstract public class AbstractTile {
                 return new Shop(gameBoard, x, y);
             case Factory.LOAD_CHARACTER:
                 return new Factory(gameBoard, x, y);
+            case DrinkTavern.LOAD_CHARACTER:
+                return new DrinkTavern(gameBoard, x, y);
+            case FoodTavern.LOAD_CHARACTER:
+                return new FoodTavern(gameBoard, x, y);
+            case MusicTavern.LOAD_CHARACTER:
+                return new MusicTavern(gameBoard, x, y);
+            case SleepTavern.LOAD_CHARACTER:
+                return new SleepTavern(gameBoard, x, y);
         }
 
         return null;
