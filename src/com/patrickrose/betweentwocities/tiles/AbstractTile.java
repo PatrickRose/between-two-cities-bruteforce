@@ -64,6 +64,8 @@ abstract public class AbstractTile {
                 return new SleepTavern(gameBoard, x, y);
             case Office.LOAD_CHARACTER:
                 return new Office(gameBoard, x, y);
+            case House.LOAD_CHARACTER:
+                return new House(gameBoard, x, y);
         }
 
         throw new IllegalArgumentException("Could not convert " + character + " to a tile");
