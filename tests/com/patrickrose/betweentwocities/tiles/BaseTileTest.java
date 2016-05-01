@@ -21,6 +21,10 @@ public class BaseTileTest {
         this.gameBoard = new GameBoard(tiles);
     }
 
+    public void attachTileToBoard(AbstractTile tile) {
+        this.tiles[tile.getX()][tile.getY()] = tile;
+    }
+
 
     protected class StubTile extends AbstractTile {
 
