@@ -1,7 +1,10 @@
 package com.patrickrose.betweentwocities;
 
-import com.patrickrose.betweentwocities.tiles.AbstractTile;
+import com.patrickrose.betweentwocities.tiles.*;
 import org.junit.Test;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static org.junit.Assert.*;
 
@@ -151,6 +154,65 @@ public class GameBoardTest {
         GameBoard gameBoard = new GameBoard(testTiles);
         assertEquals("Did not get the expected score", 16, gameBoard.getScoreForBoard());
         assertEquals("Did not get the expected score when redoing", 16, gameBoard.getScoreForBoard());
+    }
+
+    @Test
+    public void exampleScoresWithAbstractTiles() {
+        Map<Integer, String> scoreToTiles = new HashMap<>();
+
+        char shop = Shop.LOAD_CHARACTER;
+        char house = House.LOAD_CHARACTER;
+        char office = Office.LOAD_CHARACTER;
+        char music = MusicTavern.LOAD_CHARACTER;
+        char park = Park.LOAD_CHARACTER;
+        char factory = Factory.LOAD_CHARACTER;
+        char drink = DrinkTavern.LOAD_CHARACTER;
+        char food = FoodTavern.LOAD_CHARACTER;
+        char sleep = SleepTavern.LOAD_CHARACTER;
+
+        scoreToTiles.put(56, "" +
+                shop + shop + shop + shop +
+                house + house + office + music +
+                office + park + office + office +
+                office + park + house + park
+        );
+        scoreToTiles.put(52, "" +
+                music + factory + factory + factory +
+                park + park + factory + park +
+                shop + shop + music + park +
+                house + house + house + factory
+        );
+        scoreToTiles.put(65, "" +
+                music + drink + factory + factory +
+                house + food + factory + park +
+                shop + house + sleep + park +
+                house + house + house + office
+        );
+        scoreToTiles.put(66, "" +
+                music + drink + factory + factory +
+                office + food + office + sleep +
+                office + office + office + office +
+                shop + shop + shop + shop
+        );
+        scoreToTiles.put(64, "" +
+                music + drink + house + house +
+                shop + food + office + sleep +
+                shop + office + house + house +
+                shop + factory + park + park
+        );
+        scoreToTiles.put(57, "" +
+                factory + shop + factory + factory +
+                park + factory + park + park +
+                factory + sleep + house + park +
+                park + park + house + house
+        );
+
+
+        for (Map.Entry<Integer, String> entry : scoreToTiles.entrySet()) {
+            GameBoard gameBoard = new GameBoard(entry.getValue());
+
+            assertEquals("Got incorrect value for " + entry.getValue(), entry.getKey().intValue(), gameBoard.getScoreForBoard());
+        }
     }
 
     private class TestTile extends AbstractTile {
