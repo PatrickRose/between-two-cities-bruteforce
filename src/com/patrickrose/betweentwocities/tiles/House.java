@@ -22,6 +22,7 @@ public class House extends AbstractTile {
         boolean haveOffice = false;
         boolean haveShop = false;
         boolean haveTavern = false;
+        boolean havePark = false;
 
         for (int x = 0; x < GameBoard.ROWS; x++) {
             for (int y = 0; y < GameBoard.COLS; y++) {
@@ -41,6 +42,10 @@ public class House extends AbstractTile {
                 }
                 else if ((tile instanceof Shop) && !haveShop) {
                     haveShop = true;
+                    score++;
+                }
+                else if ((tile instanceof Park) && !havePark) {
+                    havePark = true;
                     score++;
                 }
             }

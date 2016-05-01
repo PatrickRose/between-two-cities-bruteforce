@@ -66,6 +66,8 @@ abstract public class AbstractTile {
                 return new Office(gameBoard, x, y);
             case House.LOAD_CHARACTER:
                 return new House(gameBoard, x, y);
+            case Park.LOAD_CHARACTER:
+                return new Park(gameBoard, x, y);
         }
 
         throw new IllegalArgumentException("Could not convert " + character + " to a tile");
