@@ -88,6 +88,13 @@ public class GameBoard {
     }
 
     public AbstractTile getTileAtPosition(int x, int y) {
+        if (x < 0 || x >= ROWS) {
+            return null;
+        }
+        if (y < 0 || y >= COLS) {
+            return null;
+        }
+
         return tiles[x][y];
     }
 }

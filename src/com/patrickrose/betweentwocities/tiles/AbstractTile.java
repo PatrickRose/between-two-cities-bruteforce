@@ -62,9 +62,11 @@ abstract public class AbstractTile {
                 return new MusicTavern(gameBoard, x, y);
             case SleepTavern.LOAD_CHARACTER:
                 return new SleepTavern(gameBoard, x, y);
+            case Office.LOAD_CHARACTER:
+                return new Office(gameBoard, x, y);
         }
 
-        return null;
+        throw new IllegalArgumentException("Could not convert " + character + " to a tile");
     }
 
     /**

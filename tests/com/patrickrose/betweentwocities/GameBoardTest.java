@@ -9,7 +9,7 @@ public class GameBoardTest {
 
     @Test
     public void testTheStringMustBeCorrect() {
-        GameBoard validGameBoard = new GameBoard("1111111111111111");
+        GameBoard validGameBoard = new GameBoard("SSSSSSSSSSSSSSSS");
 
         assertTrue("Did not get a GameBoard back", validGameBoard instanceof GameBoard);
 

@@ -18,6 +18,7 @@ public class AbstractTileTest {
         characterToTile.put(SleepTavern.LOAD_CHARACTER, new SleepTavern(null, 0, 0));
         characterToTile.put(DrinkTavern.LOAD_CHARACTER, new DrinkTavern(null, 0, 0));
         characterToTile.put(MusicTavern.LOAD_CHARACTER, new MusicTavern(null, 0, 0));
+        characterToTile.put(Office.LOAD_CHARACTER, new Office(null, 0, 0));
 
         for (Map.Entry<Character, AbstractTile> entry : characterToTile.entrySet()) {
             AbstractTile tileForCharacter = AbstractTile.getTileForCharacter(entry.getKey().charValue(), null, 0, 0);
