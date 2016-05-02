@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Shop extends AbstractTile {
 
-    public static final char LOAD_CHARACTER = 'S';
+    public static final int LOAD_CHARACTER = 0;
 
     public Shop(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

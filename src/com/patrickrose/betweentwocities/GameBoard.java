@@ -32,7 +32,7 @@ public class GameBoard {
         int colPos = 0;
 
         for (char character : setup.toCharArray()) {
-            tiles[rowPos][colPos] = AbstractTile.getTileForCharacter(character, this, rowPos, colPos);
+            tiles[rowPos][colPos] = AbstractTile.getTileForCharacter(Integer.parseInt("" +character), this, rowPos, colPos);
 
             rowPos++;
             if (rowPos == 4) {

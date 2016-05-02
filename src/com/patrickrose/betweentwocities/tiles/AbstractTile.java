@@ -2,10 +2,32 @@ package com.patrickrose.betweentwocities.tiles;
 
 import com.patrickrose.betweentwocities.GameBoard;
 
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * An abstract tile
  */
 abstract public class AbstractTile {
+
+    protected static final Map<Integer, String> CLASS_MAP;
+
+    static {
+        Map<Integer, String> aMap = new HashMap<>();
+        aMap.put(Shop.LOAD_CHARACTER, Shop.class.getName());
+        aMap.put(Factory.LOAD_CHARACTER, Factory.class.getName());
+        aMap.put(SleepTavern.LOAD_CHARACTER, SleepTavern.class.getName());
+        aMap.put(DrinkTavern.LOAD_CHARACTER, DrinkTavern.class.getName());
+        aMap.put(FoodTavern.LOAD_CHARACTER, FoodTavern.class.getName());
+        aMap.put(MusicTavern.LOAD_CHARACTER, MusicTavern.class.getName());
+        aMap.put(Office.LOAD_CHARACTER, Office.class.getName());
+        aMap.put(Park.LOAD_CHARACTER, Park.class.getName());
+        aMap.put(House.LOAD_CHARACTER, House.class.getName());
+
+        CLASS_MAP = Collections.unmodifiableMap(aMap);
+    }
+
 
     /**
      * The game board that this tile is on
@@ -48,29 +70,18 @@ abstract public class AbstractTile {
      * @return An abstract tile
      * @throws IllegalArgumentException If the character cannot be converted to a tile
      */
-    public static AbstractTile getTileForCharacter(char character, GameBoard gameBoard, int x, int y) throws IllegalArgumentException {
-        switch (character) {
-            case Shop.LOAD_CHARACTER:
-                return new Shop(gameBoard, x, y);
-            case Factory.LOAD_CHARACTER:
-                return new Factory(gameBoard, x, y);
-            case DrinkTavern.LOAD_CHARACTER:
-                return new DrinkTavern(gameBoard, x, y);
-            case FoodTavern.LOAD_CHARACTER:
-                return new FoodTavern(gameBoard, x, y);
-            case MusicTavern.LOAD_CHARACTER:
-                return new MusicTavern(gameBoard, x, y);
-            case SleepTavern.LOAD_CHARACTER:
-                return new SleepTavern(gameBoard, x, y);
-            case Office.LOAD_CHARACTER:
-                return new Office(gameBoard, x, y);
-            case House.LOAD_CHARACTER:
-                return new House(gameBoard, x, y);
-            case Park.LOAD_CHARACTER:
-                return new Park(gameBoard, x, y);
+    public static AbstractTile getTileForCharacter(int character, GameBoard gameBoard, int x, int y) throws IllegalArgumentException {
+        String className = CLASS_MAP.get(character);
+
+        if (className == null) {
+            throw new IllegalArgumentException("Could not convert " + character + " to a tile");
         }
 
-        throw new IllegalArgumentException("Could not convert " + character + " to a tile");
+        try {
+            return (AbstractTile) Class.forName(className).getConstructor(GameBoard.class, int.class, int.class).newInstance(gameBoard, x, y);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Could not convert " + character + " to a tile", e);
+        }
     }
 
     /**

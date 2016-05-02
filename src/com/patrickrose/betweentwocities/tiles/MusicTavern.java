@@ -4,7 +4,7 @@ import com.patrickrose.betweentwocities.GameBoard;
 
 public class MusicTavern extends AbstractTavern {
 
-    public static final char LOAD_CHARACTER = 'm';
+    public static final int LOAD_CHARACTER = 5;
 
     public MusicTavern(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

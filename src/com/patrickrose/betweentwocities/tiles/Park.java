@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Park extends AbstractTile {
 
-    public static final char LOAD_CHARACTER = 'P';
+    public static final int LOAD_CHARACTER = 7;
 
     public Park(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

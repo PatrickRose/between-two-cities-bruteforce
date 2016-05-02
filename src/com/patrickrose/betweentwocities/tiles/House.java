@@ -4,7 +4,7 @@ import com.patrickrose.betweentwocities.GameBoard;
 
 public class House extends AbstractTile {
 
-    public static final char LOAD_CHARACTER = 'H';
+    public static final int LOAD_CHARACTER = 8;
 
     public House(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

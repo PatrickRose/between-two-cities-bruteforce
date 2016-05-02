@@ -8,7 +8,7 @@ import java.util.List;
 public class Office extends AbstractTile {
 
     public static final int MAX_IN_SET = 6;
-    public static final char LOAD_CHARACTER = 'O';
+    public static final int LOAD_CHARACTER = 6;
 
     public Office(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

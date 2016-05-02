@@ -12,7 +12,7 @@ public class GameBoardTest {
 
     @Test
     public void testTheStringMustBeCorrect() {
-        GameBoard validGameBoard = new GameBoard("SSSSSSSSSSSSSSSS");
+        GameBoard validGameBoard = new GameBoard("0000000000000000");
 
         assertTrue("Did not get a GameBoard back", validGameBoard instanceof GameBoard);
 
@@ -160,15 +160,15 @@ public class GameBoardTest {
     public void exampleScoresWithAbstractTiles() {
         Map<Integer, String> scoreToTiles = new HashMap<>();
 
-        char shop = Shop.LOAD_CHARACTER;
-        char house = House.LOAD_CHARACTER;
-        char office = Office.LOAD_CHARACTER;
-        char music = MusicTavern.LOAD_CHARACTER;
-        char park = Park.LOAD_CHARACTER;
-        char factory = Factory.LOAD_CHARACTER;
-        char drink = DrinkTavern.LOAD_CHARACTER;
-        char food = FoodTavern.LOAD_CHARACTER;
-        char sleep = SleepTavern.LOAD_CHARACTER;
+        int shop = Shop.LOAD_CHARACTER;
+        int house = House.LOAD_CHARACTER;
+        int office = Office.LOAD_CHARACTER;
+        int music = MusicTavern.LOAD_CHARACTER;
+        int park = Park.LOAD_CHARACTER;
+        int factory = Factory.LOAD_CHARACTER;
+        int drink = DrinkTavern.LOAD_CHARACTER;
+        int food = FoodTavern.LOAD_CHARACTER;
+        int sleep = SleepTavern.LOAD_CHARACTER;
 
         scoreToTiles.put(56, "" +
                 shop + shop + shop + shop +

@@ -9,7 +9,7 @@ public class Factory extends AbstractTile {
      */
     public static final int SCORE_FOR_TILE = 4;
 
-    public static final char LOAD_CHARACTER = 'F';
+    public static final int LOAD_CHARACTER = 1;
 
     public Factory(GameBoard gameBoard, int x, int y) {
         super(gameBoard, x, y);

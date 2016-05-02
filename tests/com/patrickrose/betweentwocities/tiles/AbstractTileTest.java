@@ -11,7 +11,7 @@ public class AbstractTileTest {
 
     @Test
     public void getTileForCharacter() throws Exception {
-        Map<Character, AbstractTile> characterToTile = new HashMap<>();
+        Map<Integer, AbstractTile> characterToTile = new HashMap<>();
         characterToTile.put(Shop.LOAD_CHARACTER, new Shop(null, 0, 0));
         characterToTile.put(Factory.LOAD_CHARACTER, new Factory(null, 0, 0));
         characterToTile.put(FoodTavern.LOAD_CHARACTER, new FoodTavern(null, 0, 0));
@@ -22,8 +22,8 @@ public class AbstractTileTest {
         characterToTile.put(House.LOAD_CHARACTER, new House(null, 0, 0));
         characterToTile.put(Park.LOAD_CHARACTER, new Park(null, 0, 0));
 
-        for (Map.Entry<Character, AbstractTile> entry : characterToTile.entrySet()) {
-            AbstractTile tileForCharacter = AbstractTile.getTileForCharacter(entry.getKey().charValue(), null, 0, 0);
+        for (Map.Entry<Integer, AbstractTile> entry : characterToTile.entrySet()) {
+            AbstractTile tileForCharacter = AbstractTile.getTileForCharacter(entry.getKey(), null, 0, 0);
             Class<? extends AbstractTile> expectedClass = entry.getValue().getClass();
             Class<? extends AbstractTile> actualClass = tileForCharacter.getClass();
             assertEquals(expectedClass, actualClass);
